@@ -1,0 +1,71 @@
+@min-width: 300px;
+@min-height: 300px;
+@max-width: 100%;
+@max-height: 100%;
+@padding: 15px;
+@title-size: 1.4rem;
+@title-height: 40px;
+
+.ui-dialog {
+  display:none;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 0px;
+  top: 0px;
+  margin:0px;
+  z-index: 1;
+}
+
+.ui-dialog .ui-dialog-modal {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: #999;
+  min-width: 100%;
+  min-height: 100%;
+  margin:0px;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.ui-dialog .ui-dialog-container {
+  width: @min-width;
+  height: @min-height;
+  min-width: @min-width;
+  min-height: @min-height;
+  max-width: @max-width;
+  max-height: @max-height;
+  padding: 0px @padding;
+  background-color: #ffffff;
+}
+
+.ui-dialog .ui-dialog-container .ui-dialog-header {
+  width: auto;
+  margin: 0px -@padding;
+  line-height: @title-height;
+  font-size: 14px;
+  font-size: @title-size;
+  background-color: #333333;
+  color: #d8ab50;
+}
+
+.ui-dialog .ui-dialog-container .ui-dialog-header .ui-dialog-title {
+  padding-left: @padding;
+  float: left;
+}
+
+.ui-dialog .ui-dialog-container .ui-dialog-header .ui-dialog-close {
+  float: right;
+  display: inline-block;
+  width: @title-height;
+  text-align: center;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 21px;
+  font-size: 2.1rem;
+}
+
+.ui-dialog .ui-dialog-container .ui-dialog-footer {
+  line-height: @title-height;
+}

@@ -1,0 +1,68 @@
+section#top-nav
+  .navbar.navbar-inverse.navbar-static-top(role='navigation')
+    .navbar-header
+      if !user
+        a.navbar-brand.logo(href='/')
+          span.h3 方橙
+      else
+        a.navbar-brand.logo(href='#')
+          span.h3 方橙
+      button.navbar-toggle(type='button' data-toggle='collapse' data-target='.navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+    .container
+      .collapse.navbar-collapse
+        //- if !user && title!='Login' && title!='Create Account'
+        //-   ul.nav.nav-pills.navbar-nav.katemi-nav
+        //-     li(class=title=='Home'?'active':undefined)
+        //-       a(href='/#head-banner') 首页
+        //-     li
+        //-       a(href='/#marketing') 模块介绍
+        //-     li
+        //-       a(href='/#featurettes') 新功能
+        //-     li
+        //-       a(href='/#annotations') 界面详情
+        //-     //- li
+        //-     //-   a(href='#lower-content') 价格表
+        //-     //- li
+        //-     //-   a.unscroll(href='//blog.niukj.com') 官博
+
+        //- else if user
+        //-   ul.nav.nav-pills.navbar-nav
+        //-     li(class=title=='探索课件'?'active':undefined)
+        //-       a(href='/articles/explore') 探索课件
+        //-     li(class=title=='我的课件'?'active':undefined)
+        //-       a(href='/articles/my') 我的课件
+        //-     li(class=title=='创建课件'?'active':undefined)
+        //-       a(href='/articles/new') 创建课件
+        //-     //- li(class=title=='API Examples'?'active':undefined)
+        //-       a(href='/api') API Examples
+        //-     li(class=title=='问题汇报'?'active':undefined)
+        //-       a(href='#contactModal' data-toggle="modal") 问题汇报
+        //-   form.navbar-form.navbar-left(role='search' method="GET" action="/articles")
+        //-     .form-group
+        //-       input.form-control.search-input(type='text' name='q' placeholder='课件标题...')
+        //-     button.btn.btn-default.span(type='submit')
+        //-       i.fa.fa-search
+        ul.nav.nav-pills.navbar-nav.navbar-right
+          if !user
+            li(class=title=='登录'?'active':undefined)
+              a(href='/login') 登录
+            li(class=title=='注册'?'active':undefined)
+              a(href='/signup') 注册
+          else
+            li.dropdown(class=title=='账户管理'?'active':undefined)
+              a.dropdown-toggle(data-target="#" data-toggle='dropdown' role="button")
+                img(src='#{user.profile.picture || user.gravatar()}')
+                | #{user.profile.name || user.email || user.id}&nbsp;
+                span.caret
+              ul.dropdown-menu(role="menu")
+                li: a(href='/account') 账户信息
+                li.divider
+                li: a(href='/account/password') 修改密码
+                li.divider
+                li: a(href='/account/manage') 管理账户
+                li.divider
+                li: a(href='/logout') 登出
