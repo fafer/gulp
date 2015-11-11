@@ -1,0 +1,26 @@
+doctype html
+html.js.no-touch
+  head
+    include partials/head
+    block head
+
+  body
+    header
+      include partials/flash
+      // include partials/navigation
+
+    main
+      block content
+
+    // footer
+      // include partials/footer
+
+    block scripts
+      script(type='text/javascript', src='/js/vendors/jquery-1.9.1.min.js')
+      //- script(type='text/javascript', src='/js/jquery.mobile-1.4.5.min.js')
+      script(type='text/javascript', src='/js/vendors/bootstrap.min.js')
+      //script(type='text/javascript', src='/js/vendors/bootstrap.js')
+      script(type='text/javascript', src='/js/vendors/jquery-ui-1.10.3.min.js')
+      script(type='text/javascript', src='/js/common.js')
+      script(type='text/javascript', src='/js/scripts.js')
+      script(type="text/javascript" src="/js/vendors/jquery.cookie.js")

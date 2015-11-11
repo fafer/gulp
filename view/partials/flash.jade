@@ -1,0 +1,52 @@
+- if (messages.errors)
+  #flash-modal.modal.fade.in
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4.modal-title Modal title
+        .modal-body
+          .alert.alert-error.fade.in
+            span.alert-icon
+              i.fa.fa-fire.icon-white
+            | &#160; &#160;
+            strong= messages.errors[messages.errors.length - 1].msg
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+- if (messages.inform)
+  #flash-modal.modal.fade.in
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4.modal-title Modal title
+        .modal-body
+          .alert.alert-info.fade.in
+            span.alert-icon
+              i.fa.fa-bullhorn.icon-white
+            | &#160; &#160;
+            strong= messages.inform[messages.inform.length -1].msg
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+  
+
+- if (messages.successful)
+  #flash-modal.modal.fade.in
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4.modal-title Modal title
+        .modal-body
+          .alert.alert-success.fade.in
+            span.alert-icon
+              i.fa.fa-thumbs-up.icon-white
+            | &#160; &#160;
+            strong= messages.successful[messages.successful.length -1].msg
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+  

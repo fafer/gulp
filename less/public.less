@@ -1,0 +1,224 @@
+@global-font-size: 62.5%;
+@global-line-height: 1.5;
+@global-font-family: 'Lantinghei SC', 'Microsoft Yahei', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+.placeholder(@color:#999) {
+  color: @color;
+  text-overflow: ellipsis;
+}
+
+.border-radius(@radius:0px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  word-break: break-all;
+  word-wrap: break-word;
+  outline: none;
+}
+
+input::-ms-clear {
+  display: none; /*去除高版本IE文本框自带的'X'清除*/
+}
+
+::-webkit-input-placeholder {
+  .placeholder;
+}
+
+:-moz-placeholder {
+  .placeholder;
+}
+
+::-moz-placeholder {
+  .placeholder;
+}
+
+:-ms-input-placeholder {
+  .placeholder;
+}
+
+html {
+  font: @global-font-size @global-font-family;
+  width:100%;
+  height:100%;
+  body {
+    -webkit-text-size-adjust: none; /*取消google浏览器字体大小限制*/
+    min-width: 100%;
+    min-height: 100%;
+    font-size:12px;
+    font-size: 1.2rem;
+    cursor:pointer; /*iphone中给body绑定click事件不起作用*/
+    line-height: @global-line-height;
+    background: #ffffff;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+.hide {
+  display:none;
+}
+
+.hidden {
+  visibility:hidden;
+}
+
+.clear-float:after {
+  content: "";
+  height: 0px;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
+:focus {
+  outline: none;
+}
+
+a:link, a:visited, a:hover, a:active, a:focus, {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+ul li {
+  list-style: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+input[type="reset"], input[type="submit"], input[type="button"], button {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+input[type="reset"][disabled], input[type="submit"][disabled], input[type="button"][disabled], button[disabled] {
+  cursor: default;
+}
+
+/*input textare 提示文字样式
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+/* 禁止多行文本框textarea拖拽 */
+textarea {
+  overflow: hidden;
+  resize: none;
+}
+
+textarea {
+  vertical-align: top;
+  overflow: auto;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+[layout] {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+[layout=column] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+[layout=row] {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+[flex] {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+[layout-align="center"], [layout-align="center center"], [layout-align="center start"], [layout-align="center end"] {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+[layout-align="end"], [layout-align="end center"], [layout-align="end start"], [layout-align="end end"] {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+[layout-align="space-around"], [layout-align="space-around center"], [layout-align="space-around start"], [layout-align="space-around end"] {
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+[layout-align="space-between"], [layout-align="space-between center"], [layout-align="space-between start"], [layout-align="space-between end"] {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+[layout-align="center center"], [layout-align="start center"], [layout-align="end center"], [layout-align="space-between center"], [layout-align="space-around center"] {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+[layout-align="center start"], [layout-align="start start"], [layout-align="end start"], [layout-align="space-between start"], [layout-align="space-around start"] {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+[layout-align="center end"], [layout-align="start end"], [layout-align="end end"], [layout-align="space-between end"], [layout-align="space-around end"] {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}

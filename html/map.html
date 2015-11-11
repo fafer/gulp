@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="adress=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="stylesheet" type="text/css" href="../css/map.css" />
+    <title></title>
+</head>
+<body>
+    <div class="map">
+        <div class="zoom-out">+</div>
+        <div class="zoom-in">-</div>
+    </div>
+    <span id="s" style="position:absolute;left:10px;top:10px;color:red"></span>
+    <script type="text/javascript" src="../js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/indoormap.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('.map').css({height:$('body').height()});
+            var indoormap = new IndoorMap({
+                container:'.map',
+                base_map:'../img/eg_flower.png'
+            });
+        });
+    </script>
+    <!--<canvas id="myCanvas" width="300" height="150" ></canvas>-->
+
+    <!--<script type="text/javascript">-->
+        <!--var c=document.getElementById("myCanvas");-->
+        <!--var ctx=c.getContext("2d");-->
+        <!--ctx.beginPath();-->
+        <!--ctx.lineWidth="4";-->
+        <!--ctx.strokeStyle="green";-->
+        <!--ctx.rect(30,30,50,50);-->
+        <!--ctx.stroke();-->
+    <!--</script>-->
+    <!--<script type="text/javascript">-->
+
+        <!--var canvas = getCanvas();-->
+        <!--document.getElementById('ditu').src = canvas.data;-->
+        <!--document.body.appendChild(canvas.canvas);-->
+        <!--function getCanvas() {-->
+            <!--var canvas = document.createElement('canvas');-->
+            <!--var cxt=canvas.getContext("2d");-->
+            <!--var img=new Image();-->
+            <!--img.src="../img/eg_flower.png";-->
+            <!--cxt.drawImage(img,0,0);-->
+            <!--return {-->
+                <!--canvas:canvas,-->
+                <!--cxt:cxt,-->
+                <!--data:canvas.toDataURL()-->
+            <!--};-->
+        <!--}-->
+    <!--</script>-->
+</body>
+</html>
