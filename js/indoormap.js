@@ -12,6 +12,7 @@
     window.IndoorMap = function(options) {
         var _options = {
             container:undefined,
+            default_drawer:'canvas',
             base_map:undefined
         };
         $.extend(_options,options);
@@ -119,7 +120,7 @@
         var _state = STATE.NONE;
         var _panVector = {dx:0,dy:0};
         var transform = Transform(map.config.base_map);
-        var drawer = Drawer(map.config.base_map);
+        var drawer = Drawer(map.config.base_map,map.config.default_drawer);
         var enable = false;
 
         function select(e) {
@@ -284,38 +285,98 @@
         }.init();
     }
 
-    function Drawer(dom) {
+    function Drawer(dom,type) {
+        var drawer_type = type || 'canvas';
         var layers = [];
-        var canvas;
+        var canvas_drawer,svg_drawer;
 
-        function createCanvas() {
-            if(typeof canvas !== 'undefined') return canvas.get(0).getContext('2d');
-            canvas = $('<canvas class="layer"></canvas>');
+        function createCanvasDrawer() {
+            var canvas = $('<canvas class="layer"></canvas>');
+            var width = $(dom).width();
+            var height = $(dom).height();
             $(dom).append(canvas);
-            canvas.attr('width',$(dom).width()).attr('height',$(dom).height());
-            return canvas.get(0).getContext('2d');
+            console.log(width,height)
+            canvas.attr('width',width).attr('height',height);
+            return {
+                canvas:canvas,
+                ctx:canvas.get(0).getContext('2d'),
+                rect:function(x,y,w,h) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle="blue";
+                    this.ctx.rect(x,y,w,h);
+                    this.ctx.stroke();
+                },
+                polygon:function(paths) {
+                    this.ctx.clearRect(0,0,width,height);
+                    this.ctx.strokeStyle = "blue";
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(paths[0].x,paths[0].y);
+                    for(var index=1;index<paths.length;index++) {
+                        var temp = paths[index];
+                        this.ctx.lineTo(temp.x,temp.y);
+                    }
+                    this.ctx.closePath();
+                    this.ctx.stroke();
+                }
+            };
+        }
+
+        function createSvgDrawer() {
+            var xmlns = 'http://www.w3.org/2000/svg';
+            var svg = document.createElementNS(xmlns,'svg');
+            var width = $(dom).width();
+            var height = $(dom).height();
+            $(svg).attr('class','layer').attr('width',width).attr('height',height).attr('version','1.1').attr('xmlns',xmlns);
+            $(dom).append($(svg));
+            return {
+                svg:$(svg),
+                polygon:function(paths) {
+                    this.svg.find('path').remove();
+                    var _path = [];
+                    for(var index=0;index<paths.length;index++) {
+                        if(index === 0) {
+                            _path.push('M'+paths[0].x);
+                            _path.push(paths[0].y);
+                        } else {
+                            _path.push('L'+paths[index].x);
+                            _path.push(paths[index].y);
+                        }
+                    }
+                    _path.push('Z');
+                    _path = _path.join(' ');
+                    var path = $(document.createElementNS(xmlns,'path'));
+                    path.attr('d',_path);
+                    this.svg.append(path);
+                }
+            };
+        }
+
+        function init_drawer() {
+            if(drawer_type === "canvas") {
+                if(!canvas_drawer) {
+                    canvas_drawer = createCanvasDrawer();
+                }
+            } else {
+                if(!svg_drawer) {
+                    svg_drawer = createSvgDrawer();
+                }
+            }
         }
 
         return {
             rect:function(x,y,w,h) {
-                var ctx = createCanvas();
-                ctx.beginPath();
-                ctx.strokeStyle="blue";
-                ctx.rect(x,y,w,h);
-                ctx.stroke()
+                init_drawer();
+                if(drawer_type === "canvas") {
+                    canvas_drawer.rect(x,y,w,h);
+                }
             },
             polygon:function(paths) {
-                var ctx = createCanvas();
-                ctx.strokeStyle = "blue";
-                ctx.beginPath();
-                ctx.moveTo(paths[0].x,paths[0].y);
-                for(var index=1;index<paths.length;index++) {
-                    var temp = paths[index];
-                    ctx.lineTo(temp.x,temp.y);
+                init_drawer();
+                if(drawer_type === "canvas") {
+                    canvas_drawer.polygon(paths);
+                } else {
+                    svg_drawer.polygon(paths);
                 }
-                ctx.closePath();
-                ctx.stroke();
-                console.log(ctx)//闭合形状并且以填充方式绘制出来
             },
             init:function() {
                 $(dom).data('drawer',this);
@@ -336,6 +397,7 @@
         getTouchCoordinate:function(event) {
             var evt = event || window.event;
             var touches = evt.touches;
+
             if(touches.length === 1) {
                 return {
                     points:[

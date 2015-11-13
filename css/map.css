@@ -57,6 +57,15 @@ img {
     right:0px;
 }
 
+.map svg.layer path {
+    fill: #d8ab50;
+    -moz-opacity:0.5;
+    -webkit-opacity:0.5;
+    -o-opacity:0.5;
+    filter:alpha(opacity=50);
+    opacity: 0.5;
+}
+
 /*.anim_image {*/
 /*-webkit-transition: all 1s ease-in-out;*/
 /*-moz-transition: all 1s ease-in-out;*/
