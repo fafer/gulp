@@ -161,6 +161,8 @@
                 ];
 //                drawer.rect(vector.x,vector.y,100,100);
                 drawer.polygon(paths);
+            } else {
+                drawer.clear();
             }
         }
 
@@ -295,11 +297,13 @@
             var width = $(dom).width();
             var height = $(dom).height();
             $(dom).append(canvas);
-            console.log(width,height)
             canvas.attr('width',width).attr('height',height);
             return {
                 canvas:canvas,
                 ctx:canvas.get(0).getContext('2d'),
+                clear:function() {
+                    this.ctx.clearRect(0,0,width,height);
+                },
                 rect:function(x,y,w,h) {
                     this.ctx.beginPath();
                     this.ctx.strokeStyle="blue";
@@ -307,8 +311,8 @@
                     this.ctx.stroke();
                 },
                 polygon:function(paths) {
-                    this.ctx.clearRect(0,0,width,height);
-                    this.ctx.strokeStyle = "blue";
+                    this.clear();
+                    this.ctx.fillStyle = "rgba(216,153,44,0.5)";
                     this.ctx.beginPath();
                     this.ctx.moveTo(paths[0].x,paths[0].y);
                     for(var index=1;index<paths.length;index++) {
@@ -316,7 +320,7 @@
                         this.ctx.lineTo(temp.x,temp.y);
                     }
                     this.ctx.closePath();
-                    this.ctx.stroke();
+                    this.ctx.fill();
                 }
             };
         }
@@ -330,8 +334,11 @@
             $(dom).append($(svg));
             return {
                 svg:$(svg),
-                polygon:function(paths) {
+                clear:function() {
                     this.svg.find('path').remove();
+                },
+                polygon:function(paths) {
+                    this.clear();
                     var _path = [];
                     for(var index=0;index<paths.length;index++) {
                         if(index === 0) {
@@ -370,6 +377,13 @@
                     canvas_drawer.rect(x,y,w,h);
                 }
             },
+            clear:function() {
+                if(drawer_type === "canvas") {
+                    canvas_drawer.clear();
+                } else {
+                    svg_drawer.clear();
+                }
+            },
             polygon:function(paths) {
                 init_drawer();
                 if(drawer_type === "canvas") {
@@ -392,7 +406,7 @@
         },
         getEventCoordinate:function(event) {
             var evt = event || window.event;
-            return {x:evt.clientX,y:evt.clientY};
+            return {x:evt.clientX + $(window).scrollLeft(),y:evt.clientY+$(window).scrollTop()};
         },
         getTouchCoordinate:function(event) {
             var evt = event || window.event;
