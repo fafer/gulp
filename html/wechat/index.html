@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="address=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <title></title>
+    <link rel="stylesheet" href="../../css/wechat-index.css" />
+</head>
+<body class="wechat-main" onload="loaded()">
+    <div layout="row" class="wechat-header header-content">
+        <span layout="column" layout-align="center center"><span class="back">返回</span></span>
+        <span flex layout="column" layout-align="center center">微信</span>
+        <span layout="column" layout-align="center center" class="add">+</span>
+    </div>
+    <div id="wrapper" class="wechat-content">
+        <div>
+            <p style="text-align: center;line-height: 50px;display: none;">上拉加载</p>
+            <div class="search-container">
+                <div class="search-input">
+                    <span>搜索</span>
+                </div>
+            </div>
+            <div class="items">
+                <div class="item-content hide">
+                    <div class="content-tip" layout="row" layout-align="start center">
+                        <div flex layout="row" layout-align="start center">
+                            <div class="pc-pic" onclick="togglePlay()"></div>
+                            <span>Windows微信已登录</span>
+                        </div>
+                        <div class="status-pic"></div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg"/>
+                        <div flex layout="column" class="person-info txt-ellipsis">
+                        <span layout="row">
+                            <span flex class="person-name">我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的我的</span>
+                            <span class="time">上午9:41</span>
+                        </span>
+                        <span layout="row">
+                            <span flex class="person-msg">UI设计联盟UI设计联盟UI设计联盟UI设计联盟UI设计联盟UI设计联盟UI设计联盟UI设计联盟UI设计联盟UI设计联盟</span>
+                            <div><span class="msg-status"></span></div>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-content">
+                    <div class="content-person" layout="row" layout-align="start center">
+                        <img class="person-pic" src="../../img/1.jpg" />
+                        <div flex layout="column" class="person-info">
+                            <span class="person-name">订阅号</span>
+                            <span class="person-msg">UI设计联盟</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p id="loading" class="loading">加载中...</p>
+        </div>
+    </div>
+    <div layout="row" class="wechat-footer">
+        <div flex layout="column" layout-align="center center">
+            <img src="" alt="">
+            <span>微信</span>
+        </div>
+        <div flex layout="column" layout-align="center center">
+            <img src="" alt="">
+            <span>通讯录</span>
+        </div>
+        <div flex layout="column" layout-align="center center">
+            <img src="" alt="">
+            <span>发现</span>
+        </div>
+        <div flex layout="column" layout-align="center center">
+            <img src="" alt="">
+            <span>我</span>
+        </div>
+    </div>
+    <audio id="test" src="./t.mp3" autoplay="autoplay">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        function togglePlay() {
+            var test = document.getElementById('test');
+            if(togglePlay.isPlaying === false) {
+                test.play();
+                togglePlay.isPlaying = true;
+            } else {
+                test.pause();
+                togglePlay.isPlaying = false;
+            }
+        }
+    </script>
+    <script type="text/javascript" src="../../js/lib/zepto.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/iscroll.min.js"></script>
+    <script>
+        var myScroll;
+        function loaded () {
+            myScroll = new IScroll('#wrapper',{mouseWheel:true,click:true,tap:true});
+            myScroll.on('scroll',function() {
+                if(this.y <= this.maxScrollY + 20) {
+                    $('#loading').show();
+                }
+            });
+            myScroll.on('scrollEnd', function () {
+                console.dir(myScroll.options);
+                if(this.y <= this.maxScrollY + 20) {
+                    $('#loading').hide();
+                }
+            });
+        }
+
+//        document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    </script>
+</body>
+</html>
